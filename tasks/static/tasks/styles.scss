@@ -47,6 +47,11 @@ input[type='submit'] {
   margin: 10px auto;
   display: block;
   font-size: larger;
+
+  &:hover {
+    background-color: #4b6587;
+    color: #f7f6f2;
+  }
 }
 
 label {

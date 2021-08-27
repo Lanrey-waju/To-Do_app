@@ -50,6 +50,11 @@ input[type='submit'] {
   font-size: larger;
 }
 
+input[type='submit']:hover {
+  background-color: #4b6587;
+  color: #f7f6f2;
+}
+
 label {
   font-family: cursive;
   font-size: 1.5rem;
