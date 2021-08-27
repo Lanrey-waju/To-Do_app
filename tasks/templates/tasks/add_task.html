@@ -1,0 +1,26 @@
+{% extends 'layout.html' %} {% load static %} {% block body %}
+<div>
+  <div class="form">
+    <h1>Add Task!</h1>
+    <form autocomplete="off" action="{% url 'add-task' %}" method="POST">
+      {% csrf_token %}
+      <div>
+        <label for="task_title">Title</label>
+        <input type="text" name="task_title" id="task_title" />
+      </div>
+      <div>
+        <label for="description">Task Description</label>
+        <textarea
+          name="task_description"
+          id="description"
+          cols="30"
+          rows="10"
+        ></textarea>
+      </div>
+
+      <input type="submit" value="Submit" />
+    </form>
+    <a href="{% url 'tasks' %}">View Tasks</a>
+  </div>
+</div>
+{% endblock %}
