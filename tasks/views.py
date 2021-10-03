@@ -5,10 +5,12 @@ from django.urls import reverse
 from django.contrib import messages
 
 from .forms import NewTaskForm
+from .models import TodoList
 
 
 # Create your views here.
 def tasks(request):
+    # task_name = TodoList.objects.all[]
     if "todos" not in request.session:
         request.session["todos"] = []
     context = {"todos": request.session["todos"]}
