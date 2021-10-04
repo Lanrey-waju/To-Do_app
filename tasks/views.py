@@ -1,11 +1,10 @@
 from django.http.response import HttpResponseRedirect
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.shortcuts import render
 from django.urls import reverse
 from django.contrib import messages
 
 from .forms import NewTaskForm
-from .models import TodoList
+# from .models import TodoList
 
 
 # Create your views here.
