@@ -2,12 +2,14 @@ from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 from .forms import NewTaskForm
 # from .models import TodoList
 
 
 # Create your views here.
+@login_required
 def tasks(request):
     # task_name = TodoList.objects.all[]
     if "todos" not in request.session:
@@ -15,7 +17,7 @@ def tasks(request):
     context = {"todos": request.session["todos"]}
     return render(request, "tasks/tasks.html", context)
 
-
+@login_required
 def add_task(request):
     if request.method == "POST":
         form = NewTaskForm(request.POST)
