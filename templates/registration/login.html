@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+  {% if form.errors %}
+    <h3>Hey there, please check that your credentials are entered correctly.</h3>
+  {% endif %}
+
+
+  <form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    
+    <input type="submit" value="login" />
+    <input type="hidden" name="next" value="{{ next }}" />
+  </form>
+
+  {# Assumes you setup the password_reset view in your URLconf #}
+  {% comment %} <p><a href="{% url 'password_reset' %}">Lost password?</a></p> {% endcomment %}
+
+{% endblock %}
+
