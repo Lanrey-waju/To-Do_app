@@ -8,6 +8,8 @@ django = "*"
 psycopg2 = "*"
 gunicorn = "*"
 python-decouple = "*"
+django-heroku = "*"
+whitenoise = "*"
 
 [dev-packages]
 black = "*"
