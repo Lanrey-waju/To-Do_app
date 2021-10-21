@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+import django_heroku
 
 
 # from decouple import config
@@ -141,3 +142,5 @@ LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = 'login'
 
 LOGOUT_REDIRECT_URL = 'login'
+
+django_heroku.settings(locals())
