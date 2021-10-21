@@ -9,6 +9,6 @@ class NewTaskForm(forms.ModelForm):
 
     class Meta:
         model = TodoList
-        fields = "__all__"
+        exclude = ('productiver')
         labels = {"task_title": "Title", "task_description": "Description"}
         help_text = {"task_title": "Enter the title of your task"}
