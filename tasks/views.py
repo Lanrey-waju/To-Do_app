@@ -10,11 +10,6 @@ from .forms import NewTaskForm
 
 # Create your views here.
 @login_required
-def tasks(request):
-    # task_name = TodoList.objects.all[]
-    
-
-@login_required
 def add_task(request):
     if request.method == "POST":
         form = NewTaskForm(request.POST)
