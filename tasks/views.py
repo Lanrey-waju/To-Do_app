@@ -12,10 +12,7 @@ from .forms import NewTaskForm
 @login_required
 def tasks(request):
     # task_name = TodoList.objects.all[]
-    if "todos" not in request.session:
-        request.session["todos"] = []
-    context = {"todos": request.session["todos"]}
-    return render(request, "tasks/tasks.html", context)
+    
 
 @login_required
 def add_task(request):
@@ -27,15 +24,15 @@ def add_task(request):
             request.session["todos"] += [task]
             messages.success(request, "Task added successfully.")
             form.save()
-            return HttpResponseRedirect(reverse("tasks"))
+            return HttpResponseRedirect(reverse("add-task"))
         else:
             return render(request, "tasks/add_task.html", {"form": form})
 
     form = NewTaskForm()
     # return HttpResponse("Done!")
-    context = {
-        "form": form,
-    }
+    if "todos" not in request.session:
+        request.session["todos"] = []
+    context = {"todos": request.session["todos"], "form": form,}
     return render(request, "tasks/add_task.html", context)
     # if request.method == "POST":
 
