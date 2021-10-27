@@ -1,5 +1,10 @@
 {% extends 'layout.html' %} {% load static %} {% block body %}
 <div>
+  <header>
+    <a href="{% url 'admin' %}">Admin</a>
+  </header>
+</div>
+<div>
   <div class="task_container">
     <h2>Tasks!</h2>
     <ul>
