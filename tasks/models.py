@@ -8,7 +8,7 @@ class TodoList(models.Model):
     # name of the user is designated 'productiver'
     productiver = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     task_title = models.CharField(max_length=50, null=True)
-    task_description = models.TextField(max_length=200, null=True)
+    task_description = models.CharField(max_length=200, null=True)
     completed = models.BooleanField(default=False)
     date_created = models.DateTimeField(auto_now_add=True)
 
