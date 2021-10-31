@@ -8,9 +8,9 @@ def register(request):
   if request.method == 'POST':
     form = CreateUserForm(request.POST)
     if form.is_valid():
-      form.save()
       username = form.cleaned_data.get('username')
       password = form.cleaned_data.get('password')
+      form.save()
       return redirect('login')
 
   else:

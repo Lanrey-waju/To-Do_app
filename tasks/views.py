@@ -12,22 +12,24 @@ from .models import TodoList
 # Create your views here.
 @login_required
 def add_task(request):
-    todos = list(TodoList.objects.all())
+    productiver = request.user
+    todos = TodoList.objects.filter(productiver=productiver)
     if request.method == "POST":
         form = NewTaskForm(request.POST)
 
         if form.is_valid():
+            new_form = form.save(commit=False)
+            new_form.productiver = productiver
+            new_form.save()
             messages.success(request, "Task added successfully.")
-            form.save()
-            request.session["todos"] += todos
+            # request.session["todos"] += todos
             return HttpResponseRedirect(reverse("add-task"))
         else:
             return render(request, "tasks/add_task.html", {"form": form})
 
     form = NewTaskForm()
     # return HttpResponse("Done!")
-    if "todos" not in request.session:
-        request.session["todos"] = []
-    context = {"todos": request.session["todos"], "form": form,}
+    # if "todos" not in request.session:
+    #     request.session["todos"] = []
+    context = {"todos": todos, "form": form, "productiver": productiver}
     return render(request, "tasks/add_task.html", context)
-
