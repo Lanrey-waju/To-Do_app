@@ -4,9 +4,6 @@ from django.db.models.base import Model
 from django.core.validators import MinValueValidator, MaxValueValidator
 
 
-user = User()
-print(user)
-
 # Create your models here.
 class TodoList(models.Model):
     # name of the user is designated 'productiver'
