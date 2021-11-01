@@ -18,4 +18,4 @@ class TodoList(models.Model):
         return f'{self.task_title.title()} with priority {self.priority}'
 
     class Meta:
-        ordering = ['completed']
+        ordering = ['-date_created']

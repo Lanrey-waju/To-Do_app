@@ -17,6 +17,10 @@
     <ul>
       {% for todo in todos %}
         <li>{{ todo }}</li>
+        <form action="{% url 'delete-task' todo.id %}" method="POST">
+        {% csrf_token %}
+          <button>Delete</button>
+        </form>
       {% empty %}
         <li>No Tasks</li>
       {% endfor %}

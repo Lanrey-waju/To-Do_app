@@ -18,6 +18,7 @@ def add_task(request):
         form = NewTaskForm(request.POST)
 
         if form.is_valid():
+            # Bind the logged in user as the 'productiver'
             new_form = form.save(commit=False)
             new_form.productiver = productiver
             new_form.save()
@@ -33,3 +34,11 @@ def add_task(request):
     #     request.session["todos"] = []
     context = {"todos": todos, "form": form, "productiver": productiver}
     return render(request, "tasks/add_task.html", context)
+
+
+# View function to handle tasks deletion
+def delete_task(request, todos_id):
+    todos = TodoList.objects.get(id=todos_id)
+    if request.method == 'POST':
+        todos.delete()
+    return HttpResponseRedirect(reverse('add-task'))
