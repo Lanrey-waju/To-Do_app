@@ -1,0 +1,51 @@
+{% extends 'tasks/layout.html' %} {% load static %} {% block body %}
+<div>
+{% if messages %}
+  {% for message in messages %}
+    <h4>{{ message }}</h4>
+  {% endfor %}
+  
+{% endif %}
+  <h2>Hi, {{user.username.title}},</h2>
+  <header>
+    <a href="/admin">Admin</a>
+  </header>
+</div>
+<div>
+  {% comment %} <div class="task_container">
+    <h2>Tasks!</h2>
+    <ul>
+      {% for todo in todos %}
+        <li>{{ todo }}</li>
+        <form action="{% url 'update-task' todo.id %}" method="POST">
+        {% csrf_token %}
+          <button>Update</button>
+        </form>
+        <form action="{% url 'delete-task' todo.id %}" method="POST">
+        {% csrf_token %}
+          <button>Delete</button>
+        </form>
+      {% empty %}
+        <li>No Tasks</li>
+      {% endfor %}
+    </ul>
+  </div> {% endcomment %}
+  <div class="form">
+    <h1>Add Task!</h1>
+  <form autocomplete="off" action="{% url 'update-task' todo.id %}" method="POST">
+    {% csrf_token %}
+    <div>
+      {% comment %} <input type="select" name="productiver" value="{{ productiver }}" /> {% endcomment %}
+      {{ form.as_p }}
+    </div>
+      <input type="submit" value="Submit" />
+    </form>
+    <div>
+    {% if user.is_authenticated %}
+      <a href="{% url 'logout' %}">Log out</a>
+      <p><a href="{% url 'password_change' %}">Change your password</a></p>
+    {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}
