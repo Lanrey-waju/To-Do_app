@@ -17,6 +17,11 @@
     <ul>
       {% for todo in todos %}
         <li>{{ todo }}</li>
+        {% comment %} <a href="{% url 'update-task' todo.id %}">Update</a> {% endcomment %}
+        <form action="{% url 'update-task' todo.id %}" method="GET">
+        {% csrf_token %}
+          <button>Update</button>
+        </form>
         <form action="{% url 'delete-task' todo.id %}" method="POST">
         {% csrf_token %}
           <button>Delete</button>
