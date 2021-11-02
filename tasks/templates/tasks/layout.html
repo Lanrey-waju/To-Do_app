@@ -16,5 +16,11 @@
         </header>
     </div>
     {% block body %} {% endblock %}
+    <div>
+      {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}">Log out</a>
+        <p><a href="{% url 'password_change' %}">Change your password</a></p>
+      {% endif %}
+      </div>
   </body>
 </html>
