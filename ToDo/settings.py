@@ -27,9 +27,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = False
+# if os.environ.get('DEBUG') == 'TRUE':
+#     DEBUG = True
+# elif os.environ.get('DEBUG') == 'FALSE':
+#     DEBUG = False
 # DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
-DEBUG = (os.environ.get('DEBUG') == 'FALSE')
+DEBUG = False
 
 
 ALLOWED_HOSTS = ["productivo.herokuapp.com",
