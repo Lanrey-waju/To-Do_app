@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 import django_heroku
+from decouple import config
 
 
 # from decouple import config
@@ -25,14 +26,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 # if os.environ.get('DEBUG') == 'TRUE':
 #     DEBUG = True
 # elif os.environ.get('DEBUG') == 'FALSE':
 #     DEBUG = False
 # DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
-DEBUG = False
+DEBUG = config("DEBUG", bool)
 
 
 ALLOWED_HOSTS = ["productivo.herokuapp.com",
@@ -128,6 +129,17 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Email settings for account activation and password recovery
+
+EMAIL_USE_TLS = True
+
+EMAIL_HOST = 'smtp.gmail.com'
+
+EMAIL_HOST_USER = 'mailpytesting@gmail.com'
+
+EMAIL_HOST_PASSWORD = 'devpython1!'
+
+EMAIL_PORT = 587
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
